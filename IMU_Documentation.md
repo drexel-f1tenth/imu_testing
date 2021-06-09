@@ -15,7 +15,7 @@ Finally, using the SparkFun ICM-20948 IMU requires the SparkFun library for the 
 Communication with the IMU was done via I2C communication protocol. The pinouts for the ICM-20948 device can be seen in the graphic below for the I2C side:
 
 <p align="center">
-  <img width="350" height="350" src=images/ICM_20948_I2C.png>
+  <img width="350" height="350" src=images/ICM_20948_I2C.jpg>
 </p>
 
 For I2C communication the Vcc pin was connected to the 5V supply, the GND pin was connected to GND, the SCL pin was connected to pin A21, and finally the SDA pin was connected to pin A20. Pins A21 and A20 are the default SCL and SDA pins on the Arduino MEGA 2560, while pins A5 and A4 are the default SCL and SDA pins on the Arduino Uno. Below is a picture showing the wire connections on the actual board: 
@@ -63,62 +63,62 @@ The formating will for each of these tables will stay the same even if the calib
 
 ### Testing Configurations
 <ins>Test 1: Yes KF and Yes Calibration
-- Kalman Filtering (KF) **enabled**
+- Kalman Filtering (KF) **enabled**<br/>
 `[Line 58]` `//Kalman Filter Global Variables`
 `[Line 59]` `#if 1`
-- Digital Low Pass Filter (DLPF) for accelerometer and gyroscope **disabled** 
+- Digital Low Pass Filter (DLPF) for accelerometer and gyroscope **disabled**<br/> 
 `[Line 37]` `bool enaccDLPF = false;`
 `[Line 38]` `bool engyrDLPF = false;`
-- Calibration cycle **enabled**
+- Calibration cycle **enabled**<br/>
 `[Line 210]` `//Set to 1 in order to Enable calibration`
 `[Line 211]` `#if 1`
 - 5 seconds of data collection while IMU is standing still 
 
 <ins>Test 2: : No KF and Yes Calibration
-- Kalman Filtering (KF) **disabled**
+- Kalman Filtering (KF) **disabled**<br/>
 `[Line 58]` `//Kalman Filter Global Variables`
 `[Line 59]` `#if 0`
-- Digital Low Pass Filter (DLPF) for accelerometer and gyroscope **disabled** 
+- Digital Low Pass Filter (DLPF) for accelerometer and gyroscope **disabled**<br/> 
 `[Line 37]` `bool enaccDLPF = false;`
 `[Line 38]` `bool engyrDLPF = false;`
-- Calibration cycle **enabled**
+- Calibration cycle **enabled**<br/>
 `[Line 210]` `//Set to 1 in order to Enable calibration`
 `[Line 211]` `#if 1`
 - 5 seconds of data collection while IMU is standing still
 - Roll, Pitch, and Yaw were all manually calculated by doing a running total of using the change in time and the recorded gyroscope values. (GyX for roll, GyY for pitch, and GyZ for yaw) 
 
 <ins>Test 3: Yes KF and No Calibration
-- Kalman Filtering (KF) **enabled**
+- Kalman Filtering (KF) **enabled**<br/>
 `[Line 58]` `//Kalman Filter Global Variables`
 `[Line 59]` `#if 1`
-- Digital Low Pass Filter (DLPF) for accelerometer and gyroscope **disabled** 
+- Digital Low Pass Filter (DLPF) for accelerometer and gyroscope **disabled**<br/> 
 `[Line 37]` `bool enaccDLPF = false;`
 `[Line 38]` `bool engyrDLPF = false;`
-- Calibration cycle **disabled**
+- Calibration cycle **disabled**<br/>
 `[Line 210]` `//Set to 1 in order to Enable calibration`
 `[Line 211]` `#if 0`
 - 5 seconds of data collection while IMU is standing still 
 
 <ins>Test 4: No KF and No Calibration
-- Kalman Filtering (KF) **disabled**
+- Kalman Filtering (KF) **disabled**<br/>
 `[Line 58]` `//Kalman Filter Global Variables`
 `[Line 59]` `#if 0`
-- Digital Low Pass Filter (DLPF) for accelerometer and gyroscope **disabled** 
+- Digital Low Pass Filter (DLPF) for accelerometer and gyroscope **disabled**<br/> 
 `[Line 37]` `bool enaccDLPF = false;`
 `[Line 38]` `bool engyrDLPF = false;`
-- Calibration cycle **disabled**
+- Calibration cycle **disabled**<br/>
 `[Line 210]` `//Set to 1 in order to Enable calibration`
 `[Line 211]` `#if 0`
 - 5 seconds of data collection while IMU is standing still 
 
 <ins>Test 5: Yes KF and Yes Calibration
-- Kalman Filtering (KF) **disabled**
+- Kalman Filtering (KF) **disabled**<br/>
 `[Line 58]` `//Kalman Filter Global Variables`
 `[Line 59]` `#if 1`
-- Digital Low Pass Filter (DLPF) for accelerometer and gyroscope **disabled** 
+- Digital Low Pass Filter (DLPF) for accelerometer and gyroscope **disabled**<br/> 
 `[Line 37]` `bool enaccDLPF = false;`
 `[Line 38]` `bool engyrDLPF = false;`
-- Calibration cycle **disabled**
+- Calibration cycle **disabled**<br/>
 `[Line 210]` `//Set to 1 in order to Enable calibration`
 `[Line 211]` `#if 1`
 - Have the IMU standing still for 2 seconds. Rotate IMU CCW about 90 degrees and hold for 2 seconds. Rotate the IMU CW 180 degrees and hold for 2 seconds. Finally, rotate the IMU CCW 90 degrees and hold for 2 seconds at around its original position. (Try your best to rotate the at a constant velocity)
